@@ -1,21 +1,26 @@
-function photographerTemplate(data) {
-    const { name, portrait, city, country, price, tagline, id } = data;
-
-    const picture = `assets/photographers/${portrait}`;
+async function photographerTemplate(photographer) {
+    console.log(photographer)
+    const { name, portrait, city, country, price, tagline, id } = photographer;
+    const portrait_webp = portrait.replace('.jpg', '.webp');
+    const picture = `assets/images/Photographers/${portrait_webp}`;
 
     function getUserCardDOM() {
-        const article = document.createElement('article');
         
         const link = document.createElement('a');
         link.setAttribute('href', `/photographer.html?id=${id}`);
         link.setAttribute('aria-label', name);
+        link.setAttribute('class', 'profile-card');
 
-        article.appendChild(link);
+        const container = document.createElement('div')
+        container.setAttribute('class', 'profile-container')
+        link.appendChild(container);
 
-        const img = document.createElement('img');
-        img.setAttribute("src", picture);
+        const img = new Image(200, 200);
+        img.src = picture;
         img.setAttribute("aria-label", name);
-        link.appendChild(img);
+        img.setAttribute("class", "profile")
+        img.loading = 'eager'
+        container.appendChild(img)
 
         const h2 = document.createElement('h2');
         h2.textContent = name;
@@ -36,7 +41,7 @@ function photographerTemplate(data) {
         hono.textContent = `${price}/jours`;
         link.appendChild(hono);
 
-        return (article);
+        return (link);
     }
     return { name, picture, getUserCardDOM }
 }

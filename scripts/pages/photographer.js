@@ -1,12 +1,21 @@
 async function init() {
     const params = new URLSearchParams(document.location.search)
     const id = params.get('id')
-
-    // Récupère les medias par id
-    const media = await DataFactory.create(id)
-        .then(data => data.getMedia)
+    const data = await DataFactory.create(id)
+    const header = document.querySelector('.photograph-header')
     
-    console.log(`media(id = ${id})`, media)
+    header.insertBefore(data.infos, header.firstChild)
+
+    const container = document.createElement('div')
+    container.setAttribute('class', 'profile-container')
+    header.appendChild(container);
+
+    const img = new Image(200, 200);
+    img.src = `assets/images/Photographers/${data.picture}`;
+    img.setAttribute("aria-label", data.name);
+    img.setAttribute("class", "profile")
+    img.loading = 'eager';
+    container.appendChild(img);
 }
 
 init();

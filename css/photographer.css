@@ -1,24 +1,72 @@
-#contact_modal {
-    display: none;
-}
+/* HEADER */
 
 .photograph-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+    height: auto;
+    padding: 3% 0;
+    border-radius: 10px;
+}
+
+.information-container {
+    display: grid;
+    justify-self: center;
 }
 
 .contact_button {
-    font-size: 20px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     font-weight: bold;
+    justify-self: center;
     color: white;
     padding: 11px;
-    width: 170px;
-    height: 70px;
+    width: clamp(14rem, 25vw, 17rem);
+    height: clamp(5rem, 5vw, 7rem);
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .photograph-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        padding-bottom: 0;
+
+    }
+
+    .information-container {
+        text-align: center;
+        grid-row: 1 / span 2;
+        grid-column: 1 / span 1;
+    }
+
+    .contact_button {
+        grid-row: 2 / span 1;
+        grid-column: 2 / span 1;
+    }
+
+    .profile {
+        grid-row: 1 / span 1;
+        grid-column: 2 / span 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .photograph-header {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 2rem;
+        padding: 5% 0;
+    }
+}
+
+/* MODAL */
+
+#contact_modal {
+    display: none;
 }
 
 .modal {
@@ -48,6 +96,8 @@
     text-align: center;
 }
 
+/* FORM */
+
 form {
     display: flex;
     width: 100%;
@@ -74,3 +124,4 @@ form input {
     border: none;
     border-radius: 5px;
 }
+

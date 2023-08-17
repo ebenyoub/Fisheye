@@ -5,7 +5,6 @@ function updateLogoSource() {
         logoImage.src = "assets/icons/logo_min.png";
     } else {
         logoImage.src = "assets/icons/logo.png";
-
     }
 }
 

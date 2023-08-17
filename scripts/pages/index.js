@@ -1,9 +1,11 @@
+import loadData from "../factories/photographer.js";
+import photographerTemplate from "../templates/photographer.js";
+
 async function displayData(data) {
     const photographersSection = document.querySelector(".photographer_section");
-    const photographers = data.photographers;
-    console.log(photographers)
 
-    for (const photographer of photographers) {
+    for (const photographer of data.photographers) {
+        data.id = photographer.id;
         const photographerModel = await photographerTemplate(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
@@ -12,7 +14,7 @@ async function displayData(data) {
 
 async function init() {
     // Récupère les datas des photographes
-    const data = await DataFactory.create()
+    const data = await loadData();
     displayData(data)
 }
 

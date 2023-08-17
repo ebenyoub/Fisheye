@@ -4,11 +4,15 @@
     font-size: 62.5%;
 }
 
-body {
-    font-family: "DM Sans", sans-serif;
-    margin: 0 2rem;
+html {
     min-width: 340px;
-    margin: 0 5vw;
+}
+
+body {
+    max-width: calc(1350px + (2 * 5vw));
+    font-family: "DM Sans", sans-serif;
+    padding: 0 5vw;
+    margin: auto;
 }
 
 
@@ -48,6 +52,7 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 50%;
 }
 
 .photographer_section {
@@ -71,7 +76,7 @@ h1 {
 
 h2 {
     color: #D3573C;
-    font-size: clamp(1.2rem, 3vw, 3rem);
+    font-size: clamp(1.2rem, 3vw, 2.1rem);
     margin: .5rem;
 }
 
@@ -99,7 +104,7 @@ h2 {
     margin: .5rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 858px) {
     .photographer_section {
         grid-template-columns: 1fr 1fr;
     }
@@ -109,7 +114,7 @@ h2 {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 555px) {
     .photographer_section {
         grid-template-columns: 1fr;
     }

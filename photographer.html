@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -10,20 +10,32 @@
         <link
             href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
             rel="stylesheet">
-        <title>Fisheye - photographe
-        </title>
+        <title>Fisheye - photographe</title>
     </head>
 
     <body>
 
         <header>
-            <img width="200" height="200" class="logo" src="assets/icons/logo.png" alt="fisheye logo"/>
+            <a href="index.html">
+                <img width="200" height="200" class="logo" src="assets/icons/logo.png" alt="fisheye logo"/>
+            </a>
         </header>
 
         <main id="main">
             <header class="photograph-header">
                 <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
             </header>
+            <div class="form-sort">
+                <p class="select-label">Trier par</p>
+                <div class="select-btn">
+                    <ul class="options">
+                        <li class="option active" data-sort="favorite" value="favorite">Popularité</li>
+                        <li class="option" data-sort="date" value="date">Date</li>
+                        <li class="option" data-sort="title" value="title">Titre</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="media-container"></div>
         </main>
 				
         <div id="contact_modal">
@@ -41,11 +53,8 @@
                 </form>
             </div>
         </div>
-
-        <script src="scripts/utils/enventList.js"></script>
-        <script src="/scripts/factories/photographer.js"></script>
-        <script src="/scripts/pages/photographer.js"></script>
-        <script src="/scripts/utils/contactForm.js"></script>
+        <div class="modal-overlay"></div>
+        <script type="module" src="scripts/pages/photographer.js"></script>
     </body>
 
 </html>

@@ -11,7 +11,7 @@ async function loadData() {
     console.log('Get from JSON')
 
     // récupère les données depuis le fichier JSON
-    const data = await fetch('data/photographers.json')
+    const data = await fetch('/data/photographers.json')
         .then(response => response.json());
 
     sessionStorage.setItem("data", JSON.stringify(data))

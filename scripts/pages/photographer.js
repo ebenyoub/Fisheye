@@ -12,13 +12,13 @@ let activeOption = document.querySelector('.option.active');
 let medias = null;
 let user = null;
 
-document.addEventListener('DOMContentLoaded', launch);
-document.addEventListener('click', handleClick);
+document.addEventListener('DOMContentLoaded', launch, { once: true });
 
 async function launch() {
     await init();
     displayHeader();
     updateContainer();
+    document.addEventListener('click', handleClick);
 }
 
 function handleClick(e) {
@@ -85,11 +85,6 @@ function moveActiveOptionToTop() {
 }
 
 // -----------------------------
-//         MODALE ITEM
-// -----------------------------
-
-
-// -----------------------------
 //         INITIALISATION
 // -----------------------------
 
@@ -97,7 +92,12 @@ async function init() {
     const id = new URLSearchParams(document.location.search).get('id');
     const data = await loadData();
     user = data.photographers.find(user => user.id == id);
+    if (!user) {
+        alert(`Unknown id : ${id}`)
+        location.href = "index.html";
+    } 
     medias = data.media.filter(item => item.photographerId == id);
+    document.querySelector('.contact-name').innerHTML = user.name;
 }
 
 function displayHeader() {

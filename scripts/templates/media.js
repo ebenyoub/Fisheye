@@ -1,110 +1,177 @@
+const overlay = document.querySelector('.modal-overlay');
+const elementsToHide = document.querySelectorAll('body > :not(.modal-overlay');
+console.log(elementsToHide)
+let currentModalIndex = null;
+
 function mediaTemplate(sortedMedias, photographerName, index) {
-    const overlay = document.querySelector('.modal-overlay');
     const media = sortedMedias[index];
     const { title, likes, date } = media;
 
+    // créé les vignettes de présentation des medias
     function getCardItem() {
-        const item = createItem(index, 350, 300);
-        item.container.setAttribute('class', 'item-container');
+        const item = createItem(index);
+        const icon = document.createElement('span');
+        icon.setAttribute('class', 'icon');
+        item.container.appendChild(icon);
+        item.container.classList.add('item-container');
         const likeCount = document.createElement('span');
         likeCount.setAttribute('class', 'like-count');
         likeCount.innerText = likes;
         item.legend.appendChild(likeCount)
-        item.container.addEventListener('click', () => getItemModal(index))
+        icon.addEventListener('click', () => getItemModal(index))
         return item.container;
     }
 
+    // crée la modale de l'image
     function getItemModal(modalIndex) {
-        const height = 500;
-        const width = (350 / 300) * height;
-        const item = createItem(modalIndex, width, height);
+        currentModalIndex = modalIndex;
+        const item = createItem(modalIndex);
+        accessibilityHide();
         item.container.setAttribute('class', 'modal-item-container');
-        createXMark(item.container, overlay);
+        // ajoute les controles de la video
+        !item.container.isImage && (item.container.querySelector('.media').controls = true);
+        // crée les boutons de la modale
+        createXMark(item.container);
         const arrowRight = createArrow(item.container, 'right');
         const arrowLeft = createArrow(item.container, 'left');
         switchItem(arrowRight, 1, modalIndex)
         switchItem(arrowLeft, -1, modalIndex)
+        // efface la modale puis rajoute la nouvelle
         overlay.style.display = 'flex';
         overlay.innerHTML = null;
         overlay.appendChild(item.container);
         document.body.appendChild(overlay);
+        // ajoute les évenements à la modale
+        document.addEventListener('keydown', keyboardHandler);
         document.body.classList.add('modal-open');
     }
     
+    // Evenements click des fleches de la modale
     function switchItem(arrow, direction, modalIndex) {
-        arrow.addEventListener('click', () => {
-            const newIndex = modalIndex + direction;
-            const lastIndex = sortedMedias.length - 1;
-            const newModalIndex = newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
-            getItemModal(newModalIndex);
-        })
+        arrow.addEventListener('click', () => next(direction, modalIndex), { once: true });
+    }
+    
+    function keyboardHandler(e) {
+        switch (e.key) {
+            case 'ArrowLeft':
+                console.log('left')
+                next(-1, currentModalIndex);
+                break;
+            case 'ArrowRight':
+                console.log('right')
+                next(1, currentModalIndex);
+                break;
+            case 'Escape':
+                console.log('Escape');
+                closeModale();
+                break;
+            default:
+                return;
+        }
     }
 
-    function createItem(newIndex, width, height) {
+    // passe à la photo suivante/précédente
+    function next(direction, modalIndex) {
+        const newIndex = modalIndex + direction;
+        const lastIndex = sortedMedias.length - 1;
+        const newModalIndex = newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
+        stopKeyboardHandler();
+        return getItemModal(newModalIndex);
+    }
+    
+    // évite de créér des evenements à l'infini
+    function stopKeyboardHandler() {
+        document.removeEventListener('keydown', keyboardHandler);
+    }
+
+    function createItem(newIndex) {
         const newMedia = sortedMedias[newIndex];
+        const isImage = newMedia.image ? true : false;
         const file = newMedia.hasOwnProperty('image') ? newMedia.image : newMedia.video;
         const firstName = photographerName.split(' ')[0];
         const newMediaPath = `/assets/images/${firstName}/${file}`;
         const container = document.createElement('figure');
         var item;
         // create the image/video
-        if (newMedia.image) {
+        if (isImage) {
             item = new Image();
             const imgWebp = newMediaPath.replace('jpg', 'webp')
             item.src = imgWebp;
+            container.setAttribute("class", "image");
         } else {
             item = document.createElement('video');
             item.src = `/assets/images/${firstName}/${newMedia.video}`;
-            item.controls = true;
+            item.poster = '';
+            item.controls = false;
+            const track = item.addTextTrack('subtitles', 'Sous-titres', 'en');
+            track.addCue(new VTTCue(0, 5, media.title));
+            track.mode = 'showing';
+            container.setAttribute("class", "video");
         }
-        item.width = width;
-        item.height = height;
         item.setAttribute("class", "media");
         item.setAttribute("aria-label", title);
         item.setAttribute("data-index", newIndex)
         item.title = date;
         container.appendChild(item);
         const legend = createLegend(container, newMedia.title);
-        return { container, legend };
+        return { container, legend, isImage };
     }
-    
+
+    function createLegend(parent, title) {
+        const legend = document.createElement('figcaption');
+        legend.setAttribute('class', 'legend');
+        const legendTitle = document.createElement('p');
+        legendTitle.setAttribute('class', 'legend-title');
+        legendTitle.innerText = title;
+        legend.appendChild(legendTitle);
+        parent.appendChild(legend);
+        return legend;
+    }
+
+    function createArrow(parent, direction) {
+        const arrow = document.createElement('img')
+        arrow.setAttribute('class', `arrow ${direction}`);
+        arrow.setAttribute('aria-label', 'close modale');
+        arrow.src = "assets/icons/chevron-up-solid.svg";
+        parent.appendChild(arrow);
+        return arrow;
+    }
+
+    function createXMark(parent) {
+        const xmark = document.createElement('img')
+        xmark.setAttribute('class', 'xmark');
+        xmark.setAttribute('aria-label', 'close modale');
+        xmark.src = "assets/icons/close.svg";
+        // close modal event
+        xmark.addEventListener('click', closeModale);
+        parent.appendChild(xmark);
+    }
+
+    function closeModale() {
+        overlay.innerHTML = null;
+        overlay.style.display = 'none';
+        accessibilityShow();
+        document.body.classList.remove('modal-open')
+        stopKeyboardHandler();
+    }
+
+    function accessibilityHide() {
+        elementsToHide.forEach(element => {
+            element.setAttribute('aria-hidden', 'true');
+        })
+    }
+
+    function accessibilityShow() {
+        elementsToHide.forEach(element => {
+            element.removeAttribute('aria-hidden');
+        })
+    }
+
     return {
         getCardItem
     }
 }
 
-function createLegend(parent, title) {
-    const legend = document.createElement('figcaption');
-    legend.setAttribute('class', 'legend');
-    const legendTitle = document.createElement('p');
-    legendTitle.setAttribute('class', 'legend-title');
-    legendTitle.innerText = title;
-    legend.appendChild(legendTitle);
-    parent.appendChild(legend);
-    return legend;
-}
-
-function createArrow(parent, direction) {
-    const arrow = document.createElement('img')
-    arrow.setAttribute('class', `arrow ${direction}`);
-    arrow.setAttribute('aria-label', 'close modale');
-    arrow.src = "assets/icons/chevron-up-solid.svg";
-    parent.appendChild(arrow);
-    return arrow;
-}
-
-function createXMark(parent, overlay) {
-    const xmark = document.createElement('img')
-    xmark.setAttribute('class', 'xmark');
-    xmark.setAttribute('aria-label', 'close modale');
-    xmark.src = "assets/icons/close.svg";
-    // close modal event
-    xmark.addEventListener('click', () => {
-        overlay.innerHTML = null;
-        overlay.style.display = 'none';
-        document.body.classList.remove('modal-open')
-    })
-    parent.appendChild(xmark);
-}
-
 export default mediaTemplate;
+
+// reordonner les sous-fonctions et guerir le xmark

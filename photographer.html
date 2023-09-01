@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Nos clients prennent de super photos, mais ils n’y connaissent rien en
+        développement web. C'est pourquoi nous proposons une plateforme unique pour
+        montrer leurs photos sur une belle page et les contacter pour des événements ou
+        des tirages. Nous sommes l'un des plus grands sites de photographie en freelance,
+        avec un énorme réseau de photographes." >
         <link rel="icon" type="image/png" href="assets/favicon.png">
         <link href="css/style.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="css/photographer.css">
@@ -16,8 +21,8 @@
     <body>
 
         <header>
-            <a href="index.html">
-                <img width="200" height="200" class="logo" src="assets/icons/logo.png" alt="fisheye logo"/>
+            <a href="/index.html">
+                <img width="200" height="200" class="logo" src="assets/icons/logo.png" alt="return home fisheye"/>
             </a>
         </header>
 
@@ -42,19 +47,35 @@
             <div class="modal">
                 <header>
                     <h2>Contactez-moi</h2>
-                    <img src="assets/icons/close.svg" onclick="closeModal()"/>
+                    <p class="contact-name"></p>
+                    <img src="/assets/icons/close.svg" onclick="closeModal()"/>
                 </header>
-                <form>
+                <form class="contact-form">
                     <div>
-                        <label>Prénom</label>
-                        <input/>
+                        <div class="form-field">
+                            <label for="firstname">Prénom</label>
+                            <input type="text" id="firstname" autocomplete="true"/>
+                        </div>
+                        <div class="form-field">
+                            <label for="lastname">Nom</label>
+                            <input type="text" id="lastname" autocomplete="true"/>
+                        </div>
+                        <div class="form-field">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" autocomplete="true"/>
+                        </div>
+                        <div class="form-field">
+                            <label for="message">Votre message</label>
+                            <textarea name="message" id="message" rows="3"></textarea>
+                        </div>
                     </div>
                     <button class="contact_button">Envoyer</button>
                 </form>
             </div>
         </div>
         <div class="modal-overlay"></div>
-        <script type="module" src="scripts/pages/photographer.js"></script>
+        <script src="/scripts/utils/contactForm.js"></script>
+        <script type="module" src="/scripts/pages/photographer.js"></script>
     </body>
 
 </html>

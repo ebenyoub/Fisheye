@@ -1,3 +1,4 @@
+
 function photographerTemplate(photographer) {
     const { name, city, country, price, tagline, id, portrait } =  photographer;
     const format = portrait.replace('jpg', 'webp');

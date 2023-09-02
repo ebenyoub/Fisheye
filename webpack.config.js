@@ -2,8 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        page1: '/src/scripts/pages/index.js', // Le point d'entrée de votre application
-        page2: '/src/scripts/pages/photographer.js'
+        page1: './src/scripts/pages/index.js', // Le point d'entrée de votre application
+        page2: './src/scripts/pages/photographer.js'
     },
     resolve: {
         alias: {

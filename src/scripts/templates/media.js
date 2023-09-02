@@ -1,6 +1,5 @@
 const overlay = document.querySelector('.modal-overlay');
 const elementsToHide = document.querySelectorAll('body > :not(.modal-overlay');
-console.log(elementsToHide)
 let currentModalIndex = null;
 
 function mediaTemplate(sortedMedias, photographerName, index) {
@@ -54,15 +53,12 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     function keyboardHandler(e) {
         switch (e.key) {
             case 'ArrowLeft':
-                console.log('left')
                 next(-1, currentModalIndex);
                 break;
             case 'ArrowRight':
-                console.log('right')
                 next(1, currentModalIndex);
                 break;
             case 'Escape':
-                console.log('Escape');
                 closeModale();
                 break;
             default:
@@ -89,7 +85,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const isImage = newMedia.image ? true : false;
         const file = newMedia.hasOwnProperty('image') ? newMedia.image : newMedia.video;
         const firstName = photographerName.split(' ')[0];
-        const newMediaPath = `/assets/images/${firstName}/${file}`;
+        const newMediaPath = `/src/assets/images/${firstName}/${file}`;
         const container = document.createElement('figure');
         var item;
         // create the image/video
@@ -100,12 +96,12 @@ function mediaTemplate(sortedMedias, photographerName, index) {
             container.setAttribute("class", "image");
         } else {
             item = document.createElement('video');
-            item.src = `/assets/images/${firstName}/${newMedia.video}`;
+            item.src = `/src/assets/images/${firstName}/${newMedia.video}`;
             item.poster = '';
             item.controls = false;
             const track = item.addTextTrack('subtitles', 'Sous-titres', 'en');
             track.addCue(new VTTCue(0, 5, media.title));
-            track.mode = 'showing';
+            track.mode = 'hidden';
             container.setAttribute("class", "video");
         }
         item.setAttribute("class", "media");
@@ -132,7 +128,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const arrow = document.createElement('img')
         arrow.setAttribute('class', `arrow ${direction}`);
         arrow.setAttribute('aria-label', 'close modale');
-        arrow.src = "assets/icons/chevron-up-solid.svg";
+        arrow.src = "/src/assets/icons/chevron-up-solid.svg";
         parent.appendChild(arrow);
         return arrow;
     }
@@ -141,7 +137,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const xmark = document.createElement('img')
         xmark.setAttribute('class', 'xmark');
         xmark.setAttribute('aria-label', 'close modale');
-        xmark.src = "assets/icons/close.svg";
+        xmark.src = "/src/assets/icons/close.svg";
         // close modal event
         xmark.addEventListener('click', closeModale);
         parent.appendChild(xmark);
@@ -173,5 +169,3 @@ function mediaTemplate(sortedMedias, photographerName, index) {
 }
 
 export default mediaTemplate;
-
-// reordonner les sous-fonctions et guerir le xmark

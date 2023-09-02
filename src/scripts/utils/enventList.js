@@ -2,9 +2,9 @@ const logoImage = document.querySelector('.logo');
 
 function updateLogoSource() {
     if (window.innerWidth < 500) {
-        logoImage.src = "assets/icons/logo_min.png";
+        logoImage.src = "/src/assets/icons/logo_min.png";
     } else {
-        logoImage.src = "assets/icons/logo.png";
+        logoImage.src = "/src/assets/icons/logo.png";
     }
 }
 

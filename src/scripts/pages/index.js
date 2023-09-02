@@ -1,5 +1,5 @@
-import loadData from "../factories/photographer.js";
-import photographerTemplate from "../templates/photographer.js";
+import loadData from "@src/scripts/factories/photographer.js";
+import photographerTemplate from "@src/scripts/templates/photographer.js";
 
 async function displayData(data) {
     const photographersSection = document.querySelector(".photographer_section");

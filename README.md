@@ -1,6 +1,15 @@
-# Base de code du projet P6 - Parcours Front-end
+# 🚀 Welcome to your new awesome project!
 
-## Démarrer le projet
+This project has been created using **webpack-cli**, you can now run
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
+```
+npm run build
+```
 
+or
+
+```
+yarn build
+```
+
+to bundle your application

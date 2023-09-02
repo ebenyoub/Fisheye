@@ -1,7 +1,6 @@
 const elementsToHide = document.querySelectorAll('body > :not(#contact_modal');
 const contactModal = document.querySelector('#contact_modal');
-const contactButton = document.querySelector('.contact_button');
-console.log(contactButton)
+const contactSubmit = document.querySelector('.contact_submit');
 
 contactModal.addEventListener('click', e => {
     if (e.target === contactModal) {
@@ -9,7 +8,7 @@ contactModal.addEventListener('click', e => {
     }
 });
 
-contactButton.addEventListener('click', e => {
+contactSubmit.addEventListener('click', e => {
     e.preventDefault();
     console.log(e.target)
 })
@@ -25,6 +24,7 @@ function displayModal() {
     document.body.classList.add('modal-open');
     accessibilityHide();
 	modal.style.display = "block";
+    document.getElementById('firstname').focus();
 }
 
 function closeModal() {

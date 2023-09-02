@@ -1,6 +1,7 @@
-import loadData from "/scripts/factories/photographer.js";
-import photographerTemplate from "/scripts/templates/photographer.js";
-import mediaTemplate from "../templates/media.js";
+import loadData from "@src/scripts/factories/photographer.js";
+import photographerTemplate from "@src/scripts/templates/photographer.js";
+import mediaTemplate from "@src/scripts/templates/media.js";
+
 
 // -----------------------------
 //         SORT HANDLE
@@ -94,7 +95,7 @@ async function init() {
     user = data.photographers.find(user => user.id == id);
     if (!user) {
         alert(`Unknown id : ${id}`)
-        location.href = "index.html";
+        location.href = "/src/pages/index.html";
     } 
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;

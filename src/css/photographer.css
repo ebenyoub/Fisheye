@@ -325,6 +325,7 @@ body {
 #contact_modal {
     display: none;
     position: fixed;
+    width: 100vw;
     background-color: rgba(255, 255, 255, .8);
     inset: 0;
     z-index: 600111;
@@ -346,6 +347,7 @@ body {
     transform: translateY(-50%);
     scrollbar-width: none;
     scrollbar-color: black;
+    box-sizing: border-box;
 }
 
 ::-webkit-scrollbar {
@@ -396,7 +398,17 @@ body {
     color: black;
 }
 
-/* .modal header p {} */
+@media (max-width: 500px) {
+    .modal {
+        width: 100%;
+        height: 100vh;
+        max-height: 100%;
+    }
+
+    #contact_modal {
+        width: 100vw;
+    }
+}
 
 /* FORM */
 

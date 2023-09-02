@@ -2,11 +2,11 @@
 function photographerTemplate(photographer) {
     const { name, city, country, price, tagline, id, portrait } =  photographer;
     const format = portrait.replace('jpg', 'webp');
-    const picture = `/assets/images/Photographers/${format}`;
+    const picture = `/src/assets/images/Photographers/${format}`;
 
     function getUserCardDOM() {
         const link = document.createElement('a');
-        link.setAttribute('href', `/photographer.html?id=${id}`);
+        link.setAttribute('href', `/src/pages/photographer.html?id=${id}`);
         link.setAttribute('aria-label', name);
         link.setAttribute('class', 'profile-card');
 
@@ -44,7 +44,7 @@ function photographerTemplate(photographer) {
 
     function getUserImage() {
         const link = document.createElement('a');
-        link.setAttribute('href', `/photographer.html?id=${id}`);
+        link.setAttribute('href', `/src/pages/photographer.html?id=${id}`);
         link.setAttribute('aria-label', name);
         link.setAttribute('class', 'profile-card');
 
@@ -61,8 +61,6 @@ function photographerTemplate(photographer) {
     }
 
     function getUserInfos() {
-        const { name, city, country, tagline } = photographer;
-
         const headerInfo = document.createElement('div');
         headerInfo.setAttribute('class', 'information');
 

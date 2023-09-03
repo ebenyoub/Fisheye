@@ -15,5 +15,6 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'), // Le répertoire de sortie
         publicPath: ''
     },
-    mode: 'development'
+    mode: 'development',
+    watch: false
 };

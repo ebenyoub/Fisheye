@@ -1,5 +1,6 @@
 const overlay = document.querySelector('.modal-overlay');
 const elementsToHide = document.querySelectorAll('body > :not(.modal-overlay');
+const baseUrl = window.location.origin;
 let currentModalIndex = null;
 
 function mediaTemplate(sortedMedias, photographerName, index) {
@@ -85,7 +86,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const isImage = newMedia.image ? true : false;
         const file = newMedia.hasOwnProperty('image') ? newMedia.image : newMedia.video;
         const firstName = photographerName.split(' ')[0];
-        const newMediaPath = `/src/assets/images/${firstName}/${file}`;
+        const newMediaPath = `${baseUrl}/src/assets/images/${firstName}/${file}`;
         const container = document.createElement('figure');
         var item;
         // create the image/video
@@ -96,7 +97,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
             container.setAttribute("class", "image");
         } else {
             item = document.createElement('video');
-            item.src = `/src/assets/images/${firstName}/${newMedia.video}`;
+            item.src = `${baseUrl}/src/assets/images/${firstName}/${newMedia.video}`;
             item.poster = '';
             item.controls = false;
             const track = item.addTextTrack('subtitles', 'Sous-titres', 'en');
@@ -128,7 +129,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const arrow = document.createElement('img')
         arrow.setAttribute('class', `arrow ${direction}`);
         arrow.setAttribute('aria-label', 'close modale');
-        arrow.src = "/src/assets/icons/chevron-up-solid.svg";
+        arrow.src = `${baseUrl}/src/assets/icons/chevron-up-solid.svg`;
         parent.appendChild(arrow);
         return arrow;
     }
@@ -137,7 +138,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
         const xmark = document.createElement('img')
         xmark.setAttribute('class', 'xmark');
         xmark.setAttribute('aria-label', 'close modale');
-        xmark.src = "/src/assets/icons/close.svg";
+        xmark.src = `${baseUrl}/src/assets/icons/close.svg`;
         // close modal event
         xmark.addEventListener('click', closeModale);
         parent.appendChild(xmark);

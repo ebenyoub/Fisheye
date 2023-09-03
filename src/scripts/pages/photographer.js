@@ -95,7 +95,7 @@ async function init() {
     user = data.photographers.find(user => user.id == id);
     if (!user) {
         alert(`Unknown id : ${id}`)
-        location.href = "/src/pages/index.html";
+        location.href = `${window.location.origin}/src/pages/index.html`;
     } 
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;

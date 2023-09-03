@@ -1,10 +1,11 @@
 const logoImage = document.querySelector('.logo');
+const origin = window.location.origin;
 
 function updateLogoSource() {
     if (window.innerWidth < 500) {
-        logoImage.src = "/src/assets/icons/logo_min.png";
+        logoImage.src = `${origin}/src/assets/icons/logo_min.png`;
     } else {
-        logoImage.src = "/src/assets/icons/logo.png";
+        logoImage.src = `${origin}/src/assets/icons/logo.png`;
     }
 }
 

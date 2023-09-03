@@ -159,7 +159,7 @@ body {
 
 .option.active::after {
     content: '';
-    background: url("/assets/icons/chevron-up-solid.svg");
+    background: url("../assets/icons/chevron-up-solid.svg");
     background-size: 15px 15px;
     background-repeat: no-repeat;
     width: 15px;
@@ -485,6 +485,7 @@ body {
     position: absolute;
     content: '';
     inset: 0;
+    aspect-ratio: 350 / 300;
     background-repeat: no-repeat;
     background-size: 100px;
     background-position: center;
@@ -492,7 +493,7 @@ body {
     z-index: 6000;
     opacity: 0;
     width: 100%;
-    height: calc(100% - 1rem - 19.5px);
+    height: calc(100% - 3.3rem);
     transition: all .3s ease;
 }
 
@@ -500,6 +501,7 @@ body {
     content: '';
     position: absolute;
     inset: 0;
+    border-radius: 5px;
     background-color: rgba(255, 255, 255, .3);
     background-size: contain;
     width: 100%;
@@ -507,11 +509,11 @@ body {
 }
 
 .item-container.image .icon {
-    background-image: url('/assets/icons/camera.png');
+    background-image: url('../assets/icons/camera.png');
 }
 
 .item-container.video .icon {
-    background-image: url('/assets/icons/camera-video.png');
+    background-image: url('../assets/icons/camera-video.png');
 }
 
 .item-container .icon:hover {
@@ -572,7 +574,7 @@ body {
 
 .like-count::after {
     content: '';
-    background: url('/assets/icons/heart-solid.svg');
+    background: url('../assets/icons/heart-solid.svg');
     background-size: 15px 15px;
     background-repeat: no-repeat;
     filter: var(--color-filtered);

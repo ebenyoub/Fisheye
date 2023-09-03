@@ -1,6 +1,7 @@
 import loadData from "@src/scripts/factories/photographer.js";
 import photographerTemplate from "@src/scripts/templates/photographer.js";
 
+console.log(BASE_URL)
 async function displayData(data) {
     const photographersSection = document.querySelector(".photographer_section");
 

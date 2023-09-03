@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
     entry: {
@@ -15,5 +16,10 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'), // Le répertoire de sortie
         publicPath: ''
     },
-    mode: 'development'
+    mode: 'development',
+    plugins: [
+        new webpack.DefinePlugin({
+            BASE_URL: JSON.stringify(process.env.BASE_URL),
+        }),
+    ]
 };

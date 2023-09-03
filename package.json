@@ -1,6 +1,7 @@
 {
   "devDependencies": {
     "gh-pages": "^6.0.0",
+    "html-loader": "^4.2.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
@@ -105,5 +106,5 @@
   "bugs": {
     "url": "https://github.com/ebenyoub/Fisheye/issues"
   },
-  "homepage": "https://github.com/ebenyoub/Fisheye/src/pages/index.html"
+  "homepage": "https://ebenyoub.github.io/Fisheye/index.html"
 }

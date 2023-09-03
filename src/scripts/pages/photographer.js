@@ -1,6 +1,7 @@
 import loadData from "@src/scripts/factories/photographer.js";
 import photographerTemplate from "@src/scripts/templates/photographer.js";
 import mediaTemplate from "@src/scripts/templates/media.js";
+import { BASE_URL } from "../utils/constant";
 
 
 // -----------------------------
@@ -95,7 +96,7 @@ async function init() {
     user = data.photographers.find(user => user.id == id);
     if (!user) {
         alert(`Unknown id : ${id}`)
-        location.href = `${window.location.origin}/src/pages/index.html`;
+        location.href = `${BASE_URL}/src/pages/index.html`;
     } 
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;

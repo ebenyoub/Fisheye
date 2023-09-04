@@ -103,6 +103,7 @@ async function init() {
     } 
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;
+    document.querySelector(".link_home").href = `${BASE_URL}/index.html`;
 }
 
 function displayHeader() {

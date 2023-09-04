@@ -20,19 +20,19 @@
 
     <body>
         <header>
-            <a href="" class="link_home">
+            <a href="" class="link_home focus" tabindex="1">
                 <img width="200" height="200" class="logo" src="../assets/icons/logo.png" alt="return home fisheye">
             </a>
         </header>
 
         <main id="main">
             <header class="photograph-header">
-                <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+                <button class="contact_button focus" onclick="displayModal()" tabindex="2">Contactez-moi</button>
             </header>
             <div class="form-sort">
                 <p class="select-label">Trier par</p>
                 <div class="select-btn">
-                    <ul class="options">
+                    <ul class="options focus" tabindex="3">
                         <li class="option active" data-sort="favorite">Popularité</li>
                         <li class="option" data-sort="date">Date</li>
                         <li class="option" data-sort="title">Titre</li>
@@ -53,22 +53,22 @@
                     <div>
                         <div class="form-field">
                             <label for="firstname">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" minlength="3" required>
+                            <input type="text" id="firstname" name="firstname" minlength="3" tabindex="1" required>
                         </div>
                         <div class="form-field">
                             <label for="lastname">Nom</label>
-                            <input type="text" id="lastname" name="lastname" minlength="3" required>
+                            <input type="text" id="lastname" name="lastname" minlength="3" tabindex="2" required>
                         </div>
                         <div class="form-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" name="email" minlength="3" required>
+                            <input type="email" id="email" name="email" minlength="3" tabindex="3" required>
                         </div>
                         <div class="form-field">
                             <label for="message">Votre message</label>
-                            <textarea name="message" id="message" rows="3" minlength="3" required></textarea>
+                            <textarea name="message" id="message" rows="3" minlength="3" tabindex="4" required></textarea>
                         </div>
                     </div>
-                    <button class="contact_button contact_submit">Envoyer</button>
+                    <button class="contact_button contact_submit" tabindex="4">Envoyer</button>
                 </form>
             </div>
         </div>

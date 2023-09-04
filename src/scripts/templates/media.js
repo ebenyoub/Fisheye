@@ -12,14 +12,20 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     function getCardItem() {
         const item = createItem(index);
         const icon = document.createElement('span');
+        const likeCount = document.createElement('span');
+        
         icon.setAttribute('class', 'icon');
         item.container.appendChild(icon);
         item.container.classList.add('item-container');
-        const likeCount = document.createElement('span');
+        item.container.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === 'Space') {
+                getItemModal(index);
+            }
+        });
         likeCount.setAttribute('class', 'like-count');
         likeCount.innerText = likes;
-        item.legend.appendChild(likeCount)
-        icon.addEventListener('click', () => getItemModal(index))
+        item.legend.appendChild(likeCount);
+        icon.addEventListener('click', () => getItemModal(index));
         return item.container;
     }
 

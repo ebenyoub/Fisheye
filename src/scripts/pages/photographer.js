@@ -12,6 +12,7 @@ import { BASE_URL } from "../utils/constant";
 const selectBtn = document.querySelector('.select-btn');
 let selectList = document.querySelectorAll('.options li');
 let activeOption = document.querySelector('.option.active');
+let options = document.querySelector('.options');
 let medias = null;
 let user = null;
 
@@ -98,9 +99,8 @@ async function init() {
     const data = await loadData();
     user = data.photographers.find(user => user.id == id);
     if (!user) {
-        // alert(`Unknown id : ${id}`)
         location.href = `${BASE_URL}/index.html`;
-    } 
+    }
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;
     document.querySelector(".link_home").href = `${BASE_URL}/index.html`;
@@ -111,6 +111,21 @@ function displayHeader() {
     const userModel = photographerTemplate(user);
     insertInfosBeforeFirstChild(header, userModel.getUserInfos());
     header.appendChild(userModel.getUserImage());
+}
+
+function itemFocus() {
+    let tabindex = 4;
+    const items = document.querySelectorAll(".item-container");
+    items.forEach(item => {
+        if (document.body.classList.contains(".modal-open")) {
+            item.setAttribute("tabindex", "-1");
+        } else {
+            item.setAttribute("tabindex", tabindex++);
+
+            item.addEventListener('focus', () => item.classList.add('class', 'item-focus'));
+            item.addEventListener('blur', () => item.classList.remove("item-focus"));
+        }
+    })
 }
 
 function updateContainer(sort = 'favorite') {
@@ -126,6 +141,7 @@ function updateContainer(sort = 'favorite') {
     indexedMedias.forEach(media => {
         container.appendChild(media);
     });
+    itemFocus();
 }
 
 function insertInfosBeforeFirstChild(parent, child) {

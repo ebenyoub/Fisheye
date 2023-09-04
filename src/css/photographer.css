@@ -580,3 +580,7 @@ body {
     width: 15px;
     height: 15px;
 }
+
+.item-focus {
+    border: 2px solid
+}

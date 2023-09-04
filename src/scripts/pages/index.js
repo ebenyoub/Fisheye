@@ -1,5 +1,9 @@
 import loadData from "@src/scripts/factories/photographer.js";
 import photographerTemplate from "@src/scripts/templates/photographer.js";
+import { updateLogoSource } from "@src/scripts/utils/enventList";
+
+updateLogoSource();
+window.addEventListener("resize", updateLogoSource);
 
 async function displayData(data) {
     const photographersSection = document.querySelector(".photographer_section");

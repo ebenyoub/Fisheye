@@ -1,6 +1,7 @@
 import loadData from "@src/scripts/factories/photographer.js";
 import photographerTemplate from "@src/scripts/templates/photographer.js";
 import mediaTemplate from "@src/scripts/templates/media.js";
+import { updateLogoSource } from "@src/scripts/utils/enventList";
 
 
 // -----------------------------
@@ -14,6 +15,8 @@ let medias = null;
 let user = null;
 
 document.addEventListener('DOMContentLoaded', launch, { once: true });
+window.addEventListener("resize", updateLogoSource);
+updateLogoSource();
 
 async function launch() {
     await init();

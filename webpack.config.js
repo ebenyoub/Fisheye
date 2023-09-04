@@ -17,5 +17,5 @@ module.exports = {
         publicPath: ''
     },
     mode: 'development',
-    watch: true
+    watch: false
 };

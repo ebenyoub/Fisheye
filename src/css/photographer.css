@@ -346,7 +346,6 @@ body {
     overflow: auto;
     transform: translateY(-50%);
     scrollbar-width: none;
-    scrollbar-color: black;
     box-sizing: border-box;
 }
 

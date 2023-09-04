@@ -1,13 +1,15 @@
+import { BASE_URL } from "../utils/constant";
+
 const baseUrl = window.location.origin;
 
 function photographerTemplate(photographer) {
     const { name, city, country, price, tagline, id, portrait } =  photographer;
     const format = portrait.replace('jpg', 'webp');
-    const picture = `${baseUrl}/src/assets/images/Photographers/${format}`;
+    const picture = `${BASE_URL}/src/assets/images/Photographers/${format}`;
 
     function getUserCardDOM() {
         const link = document.createElement('a');
-        link.setAttribute('href', `${baseUrl}/src/pages/photographer.html?id=${id}`);
+        link.setAttribute('href', `${BASE_URL}/src/pages/photographer.html?id=${id}`);
         link.setAttribute('aria-label', name);
         link.setAttribute('class', 'profile-card');
 
@@ -45,7 +47,7 @@ function photographerTemplate(photographer) {
 
     function getUserImage() {
         const link = document.createElement('a');
-        link.setAttribute('href', `${baseUrl}/src/pages/photographer.html?id=${id}`);
+        link.setAttribute('href', `${BASE_URL}/src/pages/photographer.html?id=${id}`);
         link.setAttribute('aria-label', name);
         link.setAttribute('class', 'profile-card');
 

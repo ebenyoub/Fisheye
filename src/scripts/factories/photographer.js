@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/constant";
+import { BASE_URL } from "@src/scripts/utils/constant";
 
 async function loadData() {
     // récupère les données depuis le sessionStorage

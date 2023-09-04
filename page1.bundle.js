@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_scripts_factories_photographer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @src/scripts/factories/photographer.js */ \"./src/scripts/factories/photographer.js\");\n/* harmony import */ var _src_scripts_templates_photographer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @src/scripts/templates/photographer.js */ \"./src/scripts/templates/photographer.js\");\n\n\n\nasync function displayData(data) {\n    const photographersSection = document.querySelector(\".photographer_section\");\n\n    for (const photographer of data.photographers) {\n        data.id = photographer.id;\n        const photographerModel = await (0,_src_scripts_templates_photographer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(photographer);\n        const userCardDOM = photographerModel.getUserCardDOM();\n        photographersSection.appendChild(userCardDOM);\n    }\n}\n\nasync function init() {\n    // Récupère les datas des photographes\n    const data = await (0,_src_scripts_factories_photographer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n    displayData(data)\n}\n\ninit();\n\n\n\n//# sourceURL=webpack://fisheye/./src/scripts/pages/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _src_scripts_factories_photographer_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @src/scripts/factories/photographer.js */ \"./src/scripts/factories/photographer.js\");\n/* harmony import */ var _src_scripts_templates_photographer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @src/scripts/templates/photographer.js */ \"./src/scripts/templates/photographer.js\");\n/* harmony import */ var _src_scripts_utils_enventList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @src/scripts/utils/enventList */ \"./src/scripts/utils/enventList.js\");\n\n\n\n\n(0,_src_scripts_utils_enventList__WEBPACK_IMPORTED_MODULE_2__.updateLogoSource)();\nwindow.addEventListener(\"resize\", _src_scripts_utils_enventList__WEBPACK_IMPORTED_MODULE_2__.updateLogoSource);\n\nasync function displayData(data) {\n    const photographersSection = document.querySelector(\".photographer_section\");\n\n    for (const photographer of data.photographers) {\n        data.id = photographer.id;\n        const photographerModel = await (0,_src_scripts_templates_photographer_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(photographer);\n        const userCardDOM = photographerModel.getUserCardDOM();\n        photographersSection.appendChild(userCardDOM);\n    }\n}\n\nasync function init() {\n    // Récupère les datas des photographes\n    const data = await (0,_src_scripts_factories_photographer_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])();\n    displayData(data)\n}\n\ninit();\n\n\n\n//# sourceURL=webpack://fisheye/./src/scripts/pages/index.js?");
 
 /***/ }),
 
@@ -47,6 +47,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   BASE_URL: () => (/* binding */ BASE_URL)\n/* harmony export */ });\nconst getUrl = () => {\n    if (window.location.origin === 'https://ebenyoub.github.io'){\n        return window.location.origin + \"/Fisheye\";\n    }\n    return window.location.origin;\n}\nconst BASE_URL = getUrl();\n\n\n//# sourceURL=webpack://fisheye/./src/scripts/utils/constant.js?");
+
+/***/ }),
+
+/***/ "./src/scripts/utils/enventList.js":
+/*!*****************************************!*\
+  !*** ./src/scripts/utils/enventList.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   updateLogoSource: () => (/* binding */ updateLogoSource)\n/* harmony export */ });\n/* harmony import */ var _constant__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constant */ \"./src/scripts/utils/constant.js\");\n\n\nfunction updateLogoSource() {\n    const logoImage = document.querySelector('.logo');\n\n    if (window.innerWidth < 500) {\n        logoImage.src = `${_constant__WEBPACK_IMPORTED_MODULE_0__.BASE_URL}/src/assets/icons/logo_min.png`;\n    } else {\n        logoImage.src = `${_constant__WEBPACK_IMPORTED_MODULE_0__.BASE_URL}/src/assets/icons/logo.png`;\n    }\n}\n\n\n//# sourceURL=webpack://fisheye/./src/scripts/utils/enventList.js?");
 
 /***/ })
 

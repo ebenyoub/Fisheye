@@ -1,4 +1,4 @@
-// Crée une classe de gestion des données
+import { BASE_URL } from "../utils/constant";
 
 async function loadData() {
     // récupère les données depuis le sessionStorage
@@ -11,7 +11,7 @@ async function loadData() {
     console.log('Get from JSON')
 
     // récupère les données depuis le fichier JSON
-    const data = await fetch(`${window.location.origin}/src/data/photographers.json`)
+    const data = await fetch(`${BASE_URL}/src/data/photographers.json`)
         .then(response => response.json());
 
     sessionStorage.setItem("data", JSON.stringify(data))

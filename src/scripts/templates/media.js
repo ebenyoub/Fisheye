@@ -61,6 +61,7 @@ function mediaTemplate(sortedMedias, photographerName, index) {
                 next(1, currentModalIndex);
                 break;
             case 'Escape':
+                e.preventDefault();
                 closeModale();
                 break;
             default:

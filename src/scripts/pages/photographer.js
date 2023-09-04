@@ -98,8 +98,8 @@ async function init() {
     const data = await loadData();
     user = data.photographers.find(user => user.id == id);
     if (!user) {
-        alert(`Unknown id : ${id}`)
-        location.href = `${BASE_URL}/src/pages/index.html`;
+        // alert(`Unknown id : ${id}`)
+        location.href = `${BASE_URL}/index.html`;
     } 
     medias = data.media.filter(item => item.photographerId == id);
     document.querySelector('.contact-name').innerHTML = user.name;

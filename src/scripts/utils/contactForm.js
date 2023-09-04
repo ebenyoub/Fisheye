@@ -10,7 +10,7 @@ contactModal.addEventListener('click', e => {
 
 contactSubmit.addEventListener('click', e => {
     e.preventDefault();
-    console.log(e.target)
+    closeModal();
 })
 
 document.addEventListener('keydown', e => {

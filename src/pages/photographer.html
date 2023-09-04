@@ -54,19 +54,19 @@
                     <div>
                         <div class="form-field">
                             <label for="firstname">Prénom</label>
-                            <input type="text" id="firstname" autocomplete="true"/>
+                            <input type="text" id="firstname" name="firstname" autocomplete="true" min="3" required/>
                         </div>
                         <div class="form-field">
                             <label for="lastname">Nom</label>
-                            <input type="text" id="lastname" autocomplete="true"/>
+                            <input type="text" id="lastname" name="lastname" autocomplete="true" min="3" required/>
                         </div>
                         <div class="form-field">
                             <label for="email">Email</label>
-                            <input type="email" id="email" autocomplete="true"/>
+                            <input type="email" id="email" name="email" autocomplete="true" min="3" required/>
                         </div>
                         <div class="form-field">
                             <label for="message">Votre message</label>
-                            <textarea name="message" id="message" rows="3"></textarea>
+                            <textarea name="message" id="message" name="message" rows="3" minlength="3" required></textarea>
                         </div>
                     </div>
                     <button class="contact_button contact_submit">Envoyer</button>

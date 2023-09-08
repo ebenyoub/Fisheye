@@ -1,80 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Nos clients prennent de super photos, mais ils n’y connaissent rien en
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Nos clients prennent de super photos, mais ils n’y connaissent rien en
         développement web. C'est pourquoi nous proposons une plateforme unique pour
         montrer leurs photos sur une belle page et les contacter pour des événements ou
         des tirages. Nous sommes l'un des plus grands sites de photographie en freelance,
-        avec un énorme réseau de photographes." >
-        <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
-        <link href="../css/style.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="../css/photographer.css">
-        <link
-            href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap"
-            rel="stylesheet">
-        <title>Fisheye - photographe</title>
-    </head>
+        avec un énorme réseau de photographes.">
+    <link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="../css/photographer.css">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+    <title>Fisheye - photographe</title>
+</head>
 
-    <body>
-        <header>
-            <a href="" class="link_home focus" tabindex="1">
-                <img width="200" height="200" class="logo" src="../assets/icons/logo.png" alt="return home fisheye">
-            </a>
+<body>
+    <header>
+        <a href="" class="link_home focus" tabindex="1">
+            <img width="200" height="200" class="logo" src="../assets/icons/logo.png"
+                alt="return home fisheye">
+        </a>
+    </header>
+
+    <main id="main">
+        <header class="photograph-header">
+            <button class="contact_button focus" onclick="displayModal()"
+                tabindex="2">Contactez-moi</button>
         </header>
-
-        <main id="main">
-            <header class="photograph-header">
-                <button class="contact_button focus" onclick="displayModal()" tabindex="2">Contactez-moi</button>
-            </header>
-            <div class="form-sort">
-                <p class="select-label">Trier par</p>
-                <div class="select-btn">
-                    <ul class="options focus" tabindex="3">
-                        <li class="option active" data-sort="favorite">Popularité</li>
-                        <li class="option" data-sort="date">Date</li>
-                        <li class="option" data-sort="title">Titre</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="media-container"></div>
-        </main>
-				
-        <div id="contact_modal">
-            <div class="modal">
-                <header>
-                    <h2>Contactez-moi</h2>
-                    <p class="contact-name"></p>
-                    <img src="../assets/icons/close.svg" alt="" onclick="closeModal()">
-                </header>
-                <form class="contact-form">
-                    <div>
-                        <div class="form-field">
-                            <label for="firstname">Prénom</label>
-                            <input type="text" id="firstname" name="firstname" minlength="3" tabindex="1" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="lastname">Nom</label>
-                            <input type="text" id="lastname" name="lastname" minlength="3" tabindex="2" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" minlength="3" tabindex="3" required>
-                        </div>
-                        <div class="form-field">
-                            <label for="message">Votre message</label>
-                            <textarea name="message" id="message" rows="3" minlength="3" tabindex="4" required></textarea>
-                        </div>
-                    </div>
-                    <button class="contact_button contact_submit" tabindex="4">Envoyer</button>
-                </form>
+        <div class="form-sort">
+            <p class="select-label">Trier par</p>
+            <div class="select-btn">
+                <ul class="options focus" tabindex="3">
+                    <li class="option active" data-sort="favorite">Popularité</li>
+                    <li class="option" data-sort="date">Date</li>
+                    <li class="option" data-sort="title">Titre</li>
+                </ul>
             </div>
         </div>
-        <div class="modal-overlay"></div>
-        <script src="../scripts/utils/contactForm.js"></script>
-        <script type="module" src="../../dist/page2.bundle.js"></script>
-    </body>
+        <div class="media-container"></div>
+    </main>
+
+    <div id="contact_modal">
+        <div class="modal">
+            <header>
+                <h2>Contactez-moi</h2>
+                <p class="contact-name"></p>
+                <img src="../assets/icons/close.svg" alt="" onclick="closeModal()">
+            </header>
+            <form class="contact-form">
+                <div>
+                    <div class="form-field">
+                        <label for="firstname">Prénom</label>
+                        <input type="text" id="firstname" name="firstname" minlength="3"
+                            tabindex="1" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="lastname">Nom</label>
+                        <input type="text" id="lastname" name="lastname" minlength="3" tabindex="2"
+                            required>
+                    </div>
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" minlength="3" tabindex="3"
+                            required>
+                    </div>
+                    <div class="form-field">
+                        <label for="message">Votre message</label>
+                        <textarea name="message" id="message" rows="3" minlength="3" tabindex="4"
+                            required></textarea>
+                    </div>
+                </div>
+                <button class="contact_button contact_submit" tabindex="4">Envoyer</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-overlay"></div>
+    <script src="../scripts/utils/contactForm.js"></script>
+    <script type="module" src="../../dist/page2.bundle.js"></script>
+</body>
 
 </html>

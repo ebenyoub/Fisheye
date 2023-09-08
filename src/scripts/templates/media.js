@@ -59,6 +59,15 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     stopKeyboardHandler();
   }
 
+  // passe à la photo suivante/précédente
+  function next(direction, modalIndex) {
+    const newIndex = modalIndex + direction;
+    const lastIndex = sortedMedias.length - 1;
+    const newModalIndex = newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
+    stopKeyboardHandler();
+    return getItemModal(newModalIndex);
+  }
+
   function keyboardHandler(e) {
     switch (e.key) {
       case "ArrowLeft":
@@ -75,14 +84,6 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     }
   }
 
-  // passe à la photo suivante/précédente
-  function next(direction, modalIndex) {
-    const newIndex = modalIndex + direction;
-    const lastIndex = sortedMedias.length - 1;
-    const newModalIndex = newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
-    stopKeyboardHandler();
-    return getItemModal(newModalIndex);
-  }
   function createXMark(parent) {
     const xmark = document.createElement("img");
     xmark.setAttribute("class", "xmark");

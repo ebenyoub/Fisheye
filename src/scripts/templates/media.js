@@ -10,6 +10,10 @@ function mediaTemplate(sortedMedias, photographerName, index) {
   const media = sortedMedias[index];
   const { title, likes, date } = media;
 
+  // *****************************
+  //     FUnCTIONS
+  // *****************************
+
   function accessibilityHide() {
     elementsToHide.forEach((element) => {
       element.setAttribute("aria-hidden", "true");
@@ -47,16 +51,6 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     document.removeEventListener("keydown", keyboardHandler);
   }
 
-  // passe à la photo suivante/précédente
-  function next(direction, modalIndex) {
-    const newIndex = modalIndex + direction;
-    const lastIndex = sortedMedias.length - 1;
-    const newModalIndex =
-      newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
-    stopKeyboardHandler();
-    return getItemModal(newModalIndex);
-  }
-
   function closeModale() {
     overlay.innerHTML = null;
     overlay.style.display = "none";
@@ -81,6 +75,14 @@ function mediaTemplate(sortedMedias, photographerName, index) {
     }
   }
 
+  // passe à la photo suivante/précédente
+  function next(direction, modalIndex) {
+    const newIndex = modalIndex + direction;
+    const lastIndex = sortedMedias.length - 1;
+    const newModalIndex = newIndex < 0 ? lastIndex : newIndex % sortedMedias.length;
+    stopKeyboardHandler();
+    return getItemModal(newModalIndex);
+  }
   function createXMark(parent) {
     const xmark = document.createElement("img");
     xmark.setAttribute("class", "xmark");

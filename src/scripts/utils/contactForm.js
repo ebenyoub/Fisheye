@@ -14,9 +14,7 @@ function itemFocus() {
     } else {
       item.setAttribute("tabindex", tabindex);
 
-      item.addEventListener("focus", () =>
-        item.classList.add("class", "item-focus"),
-      );
+      item.addEventListener("focus", () => item.classList.add("class", "item-focus"));
       item.addEventListener("blur", () => item.classList.remove("item-focus"));
       tabindex += 1;
     }

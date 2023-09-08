@@ -33,9 +33,7 @@ function itemFocus() {
       item.setAttribute("tabindex", "-1");
     } else {
       item.setAttribute("tabindex", tabindex);
-      item.addEventListener("focus", () =>
-        item.classList.add("class", "item-focus"),
-      );
+      item.addEventListener("focus", () => item.classList.add("class", "item-focus"));
       item.addEventListener("blur", () => item.classList.remove("item-focus"));
       tabindex += 1;
     }
@@ -53,9 +51,7 @@ function sortMedia(userMedias, sort) {
         return bDate - aDate;
       });
     default:
-      return userMedias.sort((a, b) =>
-        a.title.localeCompare(b.title, "en", { sensitivity: "base" }),
-      );
+      return userMedias.sort((a, b) => a.title.localeCompare(b.title, "en", { sensitivity: "base" }));
   }
 }
 

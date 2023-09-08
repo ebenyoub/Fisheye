@@ -1,7 +1,9 @@
 import BASE_URL from "../utils/constant";
 
 function photographerTemplate(photographer) {
-  const { name, city, country, price, tagline, id, portrait } = photographer;
+  const {
+    name, city, country, price, tagline, id, portrait,
+  } = photographer;
   const format = portrait.replace("jpg", "webp");
   const picture = `${BASE_URL}/src/assets/images/Photographers/${format}`;
 
